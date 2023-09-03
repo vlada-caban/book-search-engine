@@ -34,6 +34,7 @@ const typeDefs = `
 
   type Query {
     getSingleUser: User
+    me: User
   }
 
   type Mutation {
@@ -41,7 +42,6 @@ const typeDefs = `
     login(email: String! password: String!): Auth
     saveBook(_id: ID!, bookToSave: BookInput!): User
     deleteBook(_id: ID!, bookToDelete: ID!): User
-
   }
 `;
 

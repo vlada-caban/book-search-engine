@@ -8,6 +8,13 @@ const resolvers = {
       const foundUser = await User.findOne({ email: args.email });
       return foundUser;
     },
+
+    me: async (_, __, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw AuthenticationError;
+    },
   },
   Mutation: {
     // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
@@ -38,7 +45,7 @@ const resolvers = {
     },
 
     // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
-    // user comes from context 
+    // user comes from context
     saveBook: async (_, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -47,9 +54,10 @@ const resolvers = {
           { new: true, runValidators: true }
         );
         return updatedUser;
-      } else {
-        throw AuthenticationError;
-      }
+      } 
+
+      throw AuthenticationError;
+      
     },
 
     // remove a book from `savedBooks`
@@ -63,9 +71,10 @@ const resolvers = {
         );
 
         return updatedUser;
-      } else {
-        throw AuthenticationError;
       }
+      
+      throw AuthenticationError;
+    
     },
   },
 };

@@ -9,9 +9,9 @@ const resolvers = {
       return foundUser;
     },
 
-    me: async (_, __, context) => {
+    me: async (_, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).select("-__v -password");
       }
       throw AuthenticationError;
     },
@@ -21,7 +21,6 @@ const resolvers = {
     createUser: async (_, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
 

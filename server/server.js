@@ -40,6 +40,8 @@ const startApolloServer = async () => {
   });
 };
 
+startApolloServer();
+
 // app.use(routes);
 
 // db.once('open', () => {

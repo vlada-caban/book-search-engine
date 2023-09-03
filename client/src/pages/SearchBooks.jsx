@@ -18,12 +18,11 @@ import { searchGoogleBooks } from '../utils/searchBooks';
 import { SAVE_BOOK } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
 
-//getting info about the logged in user
-const { loading, data } = useQuery(QUERY_ME);
-const me = data?.me || {};
-
-
 const SearchBooks = () => {
+  //getting info about the logged in user
+  const { loading, data } = useQuery(QUERY_ME);
+  const me = data?.me || {};
+
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data

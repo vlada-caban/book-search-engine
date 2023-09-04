@@ -6,7 +6,7 @@
 Google Books search engine allows users to search for books, save, view saved books and delete. This app was built with MERN stack: React front end, MongoDB database, and Node.js/Express.js server and API. Plus, GraphQL API built with Apollo Server.
 This app uses JWT for authentication. 
 
-Link to deployed application: 
+Link to deployed application: https://powerful-sands-42277-2c3a5a91b11b.herokuapp.com/
 
 ## Table of Contents
 
